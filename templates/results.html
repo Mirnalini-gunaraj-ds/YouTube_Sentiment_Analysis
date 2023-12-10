@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analyzer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container-fluid mt-5">
+        <h1 class="text-center">YouTube Sentiment Analyzer</h1>
+        <form action="/analyze" method="post" class="mt-4">
+            <div class="form-group">
+                <label for="link">Enter YouTube URL:</label>
+                <input type="text" name="link" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Analyze</button>
+        </form>
+    </div>
+</body>
+</html>

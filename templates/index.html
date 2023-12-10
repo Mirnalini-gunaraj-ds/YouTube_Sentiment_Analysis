@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YouTube Comments Sentiment Analyzer</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+</head>
+<style>
+    body {
+        text-align: center;
+        background-color: #000; /* Set the background color to black */
+        color: #ffff; /* Set the text color to your preferred color */
+    }
+
+    #loading {
+        display: none;
+        font-size: 24px;
+        color: #a2ce04; /* Change to your preferred color */
+    }
+
+    #loading span {
+        animation: loading 1s infinite;
+        display: inline-block;
+    }
+
+    @keyframes loading {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+        100% { transform: translateY(0); }
+    }
+
+
+</style>
+<body>
+    <h1>YouTube Comments - Sentiment Analyser</h1><br>
+    <style>
+        #analyze_button {
+            background-color: rgb((14, 8, 8), 76, 76); /* Green background color */
+            color: red; /* White text color */
+            padding: 10px 20px; /* Padding around the text */
+            font-size: 16px; /* Font size */
+            border: none; /* Remove the default border */
+            cursor: pointer; /* Add a pointer cursor on hover */
+            border-radius: 5px; /* Optional: Rounded corners */
+        }
+    </style>
+
+<style>
+    #label_url {
+        font-family: 'Your Chosen Font', sans-serif; /* Specify your chosen font */
+        /* Add other styles if needed */
+    }
+</style>
+
+    <form method="post" action="/analyze">
+        <br/>
+        <label id="label_url">Paste the URL of your YouTube video</label><br>
+        <input type="text" name="youtube_url"><br><br>
+    
+         <!-- Add the YouTube button image with click event -->
+        <img src="static/images/Logo.jpg" alt="YouTube Button" style="width: 100px; height: 100px; cursor: pointer;" onclick="fetchComments()">
+        <br><br>
+    
+         <!-- Hidden loading element -->
+    <div id="loading" style="display: none;">
+        <span style="--i:1">F</span>
+        <span style="--i:2">E</span>
+        <span style="--i:3">T</span>
+        <span style="--i:4">C</span>
+        <span style="--i:5">H</span>
+        <span style="--i:6">I</span>
+        <span style="--i:7">N</span>
+        <span style="--i:8">G&nbsp;</span>
+        <span style="--i:9">C</span>
+        <span style="--i:10">O</span>
+        <span style="--i:11">M</span>
+        <span style="--i:12">M</span>
+        <span style="--i:13">E</span>
+        <span style="--i:14">N</span>
+        <span style="--i:15">T</span>
+        <span style="--i:16">S</span>
+        <span style="--i:17">.</span>
+        <span style="--i:18">.</span>
+        <span style="--i:19">.</span>
+        <span style="--i:20">.</span>
+    </div>
+    
+    <!-- Submit button -->
+    <input type="submit" value="Click Here" id="analyze_button" onclick="$('#loading').show();">
+    </form>
+
+    <div id="loading">
+        <span style="--i:1">F</span>
+        <span style="--i:2">E</span>
+        <span style="--i:3">T</span>
+        <span style="--i:4">C</span>
+        <span style="--i:5">H</span>
+        <span style="--i:6">I</span>
+        <span style="--i:7">N</span>
+        <span style="--i:8">G&nbsp;</span>
+        <span style="--i:9">C</span>
+        <span style="--i:10">O</span>
+        <span style="--i:11">M</span>
+        <span style="--i:12">M</span>
+        <span style="--i:13">E</span>
+        <span style="--i:14">N</span>
+        <span style="--i:15">T</span>
+        <span style="--i:16">S</span>
+        <span style="--i:17">.</span>
+        <span style="--i:18">.</span>
+        <span style="--i:19">.</span>
+        <span style="--i:20">.</span>
+    </div>
+
+    <br>
+
+    {% if result %}
+        <h3>{{ result['after_complete_message'] }}<br><br/>
+
+  
+            <span class="res_mes">Positive Comments:</span>{{ result['total_positive_comments'] }}<br/>
+            <span class="res_mes">Negative Comments:</span>{{ result['total_negative_comments'] }}<br></h3>
+
+            <h1>Positive Word Cloud</h1>
+            <img src="data:image/png;base64,{{ result.positive_wordcloud_image }}" alt="Positive Word Cloud">
+
+            <h1>Negative Word Cloud</h1>
+            <img src="data:image/png;base64,{{ result.negative_wordcloud_image }}" alt="Negative Word Cloud">
+</body>
+</html>
+    {% endif %}<br>
+
+
+</body>
+</html>
+
