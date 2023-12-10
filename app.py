@@ -24,7 +24,7 @@ def after_request(response):
     return response
 
 # Replace 'YOUR_API_KEY' with your actual API key
-#API_KEY = 'AIzaSyAYlcJkAwyshjEYK1acVSKgWWjOGmVp3l0'
+#API_KEY = '------------------------'
 #youtube = build('youtube', 'v3', developerKey=API_KEY)
 
 def save_figure(figure, filename):
